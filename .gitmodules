@@ -1,0 +1,3 @@
+[submodule "hapticlabsplayer"]
+	path = hapticlabsplayer
+	url = https://github.com/HapticlabsIO/androidplayer

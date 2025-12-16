@@ -1,0 +1,18 @@
+{
+  "ProjectName": "L3 Android Issues",
+  "TrackName": "Test",
+  "Duration": 6000,
+  "Timings": [
+    2000,
+    2000,
+    2000
+  ],
+  "Amplitudes": [
+    255,
+    112,
+    255
+  ],
+  "Repeat": -1,
+  "RequiredAudioFiles": [],
+  "Audios": []
+}
