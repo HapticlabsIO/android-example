@@ -18,6 +18,7 @@ This sample application demonstrates the features and usage of the `hapticlabspl
    git submodule update --init --recursive
    ```
 3. Open the project in Android Studio.
-4. Build and run the app on your device.
+4. The library in `hapticlabsplayer` is an included Gradle build that locates the Android SDK on its own. Either set `ANDROID_HOME`, or copy `local.properties` into `hapticlabsplayer/`.
+5. Build and run the app on your device.
 
 For more information, see the [`hapticlabsplayer` documentation](https://github.com/HapticlabsIO/androidplayer).

@@ -21,4 +21,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "HapticlabsPackageExample"
 include(":app")
-include(":hapticlabsplayer")
+// Builds the library from the submodule, substituting io.hapticlabs:hapticlabsplayer
+includeBuild("hapticlabsplayer")

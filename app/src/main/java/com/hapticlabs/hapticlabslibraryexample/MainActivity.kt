@@ -20,7 +20,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import com.hapticlabs.hapticlabslibraryexample.theme.ui.HapticlabsLibraryExampleTheme
 import io.hapticlabs.hapticlabsplayer.HapticlabsPlayer
-import java.io.File
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,6 +41,7 @@ fun Buttons(paddingValues: PaddingValues) {
     val hapticlabsPlayer = remember {
         HapticlabsPlayer(context)
     }
+    var abortPlayback = {}
 
     // A button
     Column(
@@ -52,7 +52,7 @@ fun Buttons(paddingValues: PaddingValues) {
         horizontalAlignment = Alignment.CenterHorizontally, // Centers buttons horizontally
     ) {
         Button(onClick = {
-            hapticlabsPlayer.play(
+            abortPlayback = hapticlabsPlayer.play(
                 "complex.hac"
             ) {
                 println("Playback terminated (auto-select)")
@@ -120,31 +120,9 @@ fun Buttons(paddingValues: PaddingValues) {
             Text("Play built-in (\"Heavy Click\")")
         }
         Button(onClick = {
-            // Get binary data from assets/sine8sfreqfade.hab
-            val inputStream = context.assets.open("sine8sfreqfade.hab")
-            val habBuffer = ByteArray(inputStream.available())
-            inputStream.read(habBuffer)
-            inputStream.close()
-
-
-            val mediaFile = File(context.cacheDir, "test.mp4")
-            context.assets.open("test.mp4").use { input ->
-                mediaFile.outputStream().use { output ->
-                    input.copyTo(output)
-                }
-            }
-
-            // A valid, accessible path to the ogg file
-            val oggPath = File(context.cacheDir, "sine8sfreqfade.ogg")
-
-            hapticlabsPlayer.generateOGGFromHAB(habBuffer, mediaFile, 1f, oggPath ) {
-                println("OGG generated")
-                hapticlabsPlayer.playOGG(oggPath.absolutePath){
-                    println("OGG played")
-                }
-            }
+            abortPlayback()
         }) {
-            Text("Play live-generated")
+            Text("Cancel playback")
         }
     }
 }
